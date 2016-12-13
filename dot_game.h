@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include <QPainter>
 #include <QKeyEvent>
-#include <vector>
+//#include <vector>
 
 namespace Ui
 {class Dot_Game;}
@@ -34,6 +34,7 @@ private:
         double y;
     };
     Point Player;
+    std::vector<Point> Enemies;
 };
 
 #endif // DOT_GAME_H
