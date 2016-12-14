@@ -5,7 +5,7 @@
 #include <time.h>
 
 Dot_Game::Dot_Game(QWidget* parent)
-    : QMainWindow(parent), ui(new Ui::Dot_Game)
+    : QMainWindow(parent), ui(new Ui::Dot_Game), score(0)
 {
     ui->setupUi(this);
 
@@ -69,13 +69,22 @@ void Dot_Game::keyPressEvent(QKeyEvent* event)
     return;
 }
 
+void Dot_Game::updateScore(int n)
+{
+    score += n;
+    ui->ScoreLabel_2->setNum(score);
+}
+
 void Dot_Game::removeDeadEnemies()
 {
     int i = 0;
     while(i < Enemies.size())
     {
         if(Player.x == (Enemies[i]).x && Player.y == (Enemies[i].y))
+        {
             Enemies.erase(Enemies.begin()+i);
+            updateScore(10);
+        }
         else
             i++;
     }

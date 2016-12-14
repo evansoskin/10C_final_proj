@@ -18,8 +18,6 @@ public:
     ~Dot_Game();
     void paintEvent(QPaintEvent* e);
     void keyPressEvent(QKeyEvent* event);
-
-public slots:
     void moveRight();
     void moveLeft();
     void moveUp();
@@ -29,6 +27,7 @@ private:
     Ui::Dot_Game* ui;
     void handleEventsAndRepaint();
     void removeDeadEnemies();
+    void updateScore(int n);
     class Point{
     public:
         double x;
@@ -36,6 +35,7 @@ private:
     };
     Point Player;
     std::vector<Point> Enemies;
+    int score;
 };
 
 #endif // DOT_GAME_H
