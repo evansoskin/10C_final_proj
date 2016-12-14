@@ -18,8 +18,8 @@ Dot_Game::Dot_Game(QWidget* parent)
     int e_size = Enemies.size();
     for(int i = 0; i < e_size; i++)
     {
-        (Enemies[i]).x = rand() % 780 + 100;
-        (Enemies[i]).y = rand() % 780 + 100;
+        (Enemies[i]).x = (rand() % 78 + 10) * 10;
+        (Enemies[i]).y = (rand() % 78 + 10) * 10;
     }
 }
 
@@ -28,17 +28,11 @@ Dot_Game::~Dot_Game()
     delete ui;
 }
 
-
-// Player is Green dot
 void Dot_Game::paintEvent(QPaintEvent* e){
 
     QPainter painter(this);
-    painter.setBrush(QBrush(Qt::green));
-
     double width = 20.0;
     double height = 20.0;
-    QRect Player( this->Player.x, this->Player.y, width, height );
-    painter.drawEllipse(Player);
 
     painter.setBrush(QBrush(Qt::black));
     int e_size = Enemies.size();
@@ -48,11 +42,12 @@ void Dot_Game::paintEvent(QPaintEvent* e){
         painter.drawEllipse(current_enemy);
     }
 
+    painter.setBrush(QBrush(Qt::green));
+    QRect Player( this->Player.x, this->Player.y, width, height );
+    painter.drawEllipse(Player);
     return;
 }
 
-
-// Arrow keys move dot, others ignored.
 void Dot_Game::keyPressEvent(QKeyEvent* event)
 {
     switch (event->key()){
@@ -74,16 +69,28 @@ void Dot_Game::keyPressEvent(QKeyEvent* event)
     return;
 }
 
-void Dot_Game::handleEventsAndRepaint() {
+void Dot_Game::removeDeadEnemies()
+{
+    int i = 0;
+    while(i < Enemies.size())
+    {
+        if(Player.x == (Enemies[i]).x && Player.y == (Enemies[i].y))
+            Enemies.erase(Enemies.begin()+i);
+        else
+            i++;
+    }
 
+    return;
+}
+
+void Dot_Game::handleEventsAndRepaint()
+{
     QCoreApplication::processEvents();
+    removeDeadEnemies();
 
     this->repaint();
     return;
 }
-
-
-// Update x & y coordinates accordingly and repaint the widget.
 
 void Dot_Game::moveRight()
 {

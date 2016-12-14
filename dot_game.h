@@ -16,8 +16,8 @@ class Dot_Game : public QMainWindow
 public:
     explicit Dot_Game(QWidget* parent = 0);
     ~Dot_Game();
-    void paintEvent( QPaintEvent* e );
-    void keyPressEvent( QKeyEvent* event );
+    void paintEvent(QPaintEvent* e);
+    void keyPressEvent(QKeyEvent* event);
 
 public slots:
     void moveRight();
@@ -28,6 +28,7 @@ public slots:
 private:
     Ui::Dot_Game* ui;
     void handleEventsAndRepaint();
+    void removeDeadEnemies();
     class Point{
     public:
         double x;
