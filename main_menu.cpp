@@ -3,7 +3,7 @@
 #include "dot_game.h"
 
 Main_Menu::Main_Menu(QWidget* parent)
-    : QMainWindow(parent), ui(new Ui::Main_Menu)
+    : QMainWindow(parent), ui(new Ui::Main_Menu), game_window(nullptr)
 {
     ui->setupUi(this);
 
@@ -21,11 +21,13 @@ Main_Menu::~Main_Menu()
     delete ui;
     delete start;
     delete exit;
+    delete game_window;
 }
 
 void Main_Menu::start_game()
 {
-    Dot_Game* game_window = new Dot_Game;
+    delete game_window;
+    game_window = new Dot_Game;
     game_window->setFixedSize(1000,1000);
     game_window->show();
 }

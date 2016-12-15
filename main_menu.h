@@ -1,6 +1,7 @@
 #ifndef MAIN_MENU_H
 #define MAIN_MENU_H
 
+#include "dot_game.h"
 #include <QMainWindow>
 #include <QPushButton>
 
@@ -21,6 +22,7 @@ private:
     Ui::Main_Menu* ui;
     QPushButton* start;
     QPushButton* exit;
+    Dot_Game* game_window;
 
 private slots:
     void start_game();

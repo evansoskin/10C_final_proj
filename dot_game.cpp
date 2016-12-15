@@ -64,6 +64,9 @@ void Dot_Game::keyPressEvent(QKeyEvent* event)
         case Qt::Key_Down :
             this->moveDown();
             break;
+        case Qt::Key_Escape :
+            this->esc_to_menu();
+            break;
         default:
             QWidget::keyPressEvent(event);
     }
@@ -144,4 +147,9 @@ void Dot_Game::moveDown()
     }
     this->handleEventsAndRepaint();
     return;
+}
+
+void Dot_Game::esc_to_menu()
+{
+    this->close();
 }

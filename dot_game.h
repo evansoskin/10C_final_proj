@@ -22,6 +22,7 @@ public:
     void moveLeft();
     void moveUp();
     void moveDown();
+    void esc_to_menu();
 
 private:
     Ui::Dot_Game* ui;
