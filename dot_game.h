@@ -4,7 +4,6 @@
 #include <QMainWindow>
 #include <QPainter>
 #include <QKeyEvent>
-//#include <vector>
 
 namespace Ui
 {class Dot_Game;}
