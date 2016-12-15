@@ -83,7 +83,7 @@ void Dot_Game::removeDeadEnemies()
         if(Player.x == (Enemies[i]).x && Player.y == (Enemies[i].y))
         {
             Enemies.erase(Enemies.begin()+i);
-            updateScore(10);
+            updateScore(100);
         }
         else
             i++;
@@ -104,7 +104,10 @@ void Dot_Game::handleEventsAndRepaint()
 void Dot_Game::moveRight()
 {
     if (this->Player.x < 880)
+    {
         this->Player.x += 10.0;
+        updateScore(-1);
+    }
     this->handleEventsAndRepaint();
     return;
 }
@@ -112,7 +115,10 @@ void Dot_Game::moveRight()
 void Dot_Game::moveLeft()
 {
     if (this->Player.x > 100)
+    {
         this->Player.x -= 10.0;
+        updateScore(-1);
+    }
     this->handleEventsAndRepaint();
     return;
 }
@@ -120,7 +126,10 @@ void Dot_Game::moveLeft()
 void Dot_Game::moveUp()
 {
     if (this->Player.y > 100)
+    {
         this->Player.y -= 10.0;
+        updateScore(-1);
+    }
     this->handleEventsAndRepaint();
     return;
 }
@@ -128,7 +137,10 @@ void Dot_Game::moveUp()
 void Dot_Game::moveDown()
 {
     if (this->Player.y < 880)
+    {
         this->Player.y += 10.0;
+        updateScore(-1);
+    }
     this->handleEventsAndRepaint();
     return;
 }
