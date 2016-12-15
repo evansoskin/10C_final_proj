@@ -1,3 +1,4 @@
+#include "main_menu.h"
 #include "dot_game.h"
 #include "ui_dot_game.h"
 #include <stdio.h>

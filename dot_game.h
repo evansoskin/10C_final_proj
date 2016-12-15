@@ -1,9 +1,10 @@
 #ifndef DOT_GAME_H
 #define DOT_GAME_H
-
 #include <QMainWindow>
 #include <QPainter>
 #include <QKeyEvent>
+
+class Main_Menu;
 
 namespace Ui
 {class Dot_Game;}

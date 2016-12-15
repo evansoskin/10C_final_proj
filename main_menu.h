@@ -1,7 +1,6 @@
 #ifndef MAIN_MENU_H
 #define MAIN_MENU_H
 
-#include "dot_game.h"
 #include <QMainWindow>
 #include <QPushButton>
 
@@ -19,7 +18,6 @@ public:
     bool exit_b;
 
 private:
-    Dot_Game* game_window;
     Ui::Main_Menu* ui;
     QPushButton* start;
     QPushButton* exit;
