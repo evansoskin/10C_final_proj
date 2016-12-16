@@ -10,12 +10,16 @@ Dot_Game::Dot_Game(QWidget* parent)
 {
     ui->setupUi(this);
 
+    ui->GameComplete->setVisible(false);
+    ui->ScoreLabel_eog->setVisible(false);
+    ui->ScoreLabel_2_eog->setVisible(false);
+
     // The starting point of player
     this->Player.x = 490;
     this->Player.y = 490;
 
     srand(time(NULL));
-    Enemies.resize(25);
+    Enemies.resize(2);
     int e_size = Enemies.size();
     for(int i = 0; i < e_size; i++)
     {
@@ -94,6 +98,13 @@ void Dot_Game::removeDeadEnemies()
     }
     if(Enemies.size() == 0)
     {
+        ui->GameComplete->setVisible(true);
+        ui->ScoreLabel_eog->setVisible(true);
+        ui->ScoreLabel_2_eog->setVisible(true);
+        ui->GameComplete->setStyleSheet("color: white;");
+        ui->ScoreLabel_eog->setStyleSheet("color: white;");
+        ui->ScoreLabel_2_eog->setStyleSheet("color: white;");
+        ui->ScoreLabel_2_eog->setNum(score);
         ui->game_over->setStyleSheet("background-color: black;");
         ui->game_over->show();
     }

@@ -83,6 +83,54 @@
        <bold>true</bold>
       </font>
      </property>
+     <widget class="QLabel" name="GameComplete">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>100</y>
+        <width>200</width>
+        <height>50</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Game Complete!</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ScoreLabel_eog">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>150</y>
+        <width>200</width>
+        <height>50</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Score:</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ScoreLabel_2_eog">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>200</y>
+        <width>200</width>
+        <height>50</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>0</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
     </widget>
    </widget>
    <widget class="QLabel" name="Title">
