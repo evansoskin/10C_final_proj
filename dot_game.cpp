@@ -10,17 +10,16 @@ Dot_Game::Dot_Game(QWidget* parent)
 {
     ui->setupUi(this);
 
-    ui->GameComplete->setVisible(false);
-    ui->ScoreLabel_eog->setVisible(false);
-    ui->ScoreLabel_2_eog->setVisible(false);
+    //connect(ui->exit_to_menu, SIGNAL(released()), this, SLOT(close_DG()));
+    ui->game_over->setVisible(false);
 
     // The starting point of player
     this->Player.x = 490;
     this->Player.y = 490;
 
     srand(time(NULL));
-    Enemies.resize(2);
-    int e_size = Enemies.size();
+    Enemies.resize(25);
+    size_t e_size = Enemies.size();
     for(int i = 0; i < e_size; i++)
     {
         (Enemies[i]).x = (rand() % 78 + 10) * 10;
@@ -40,7 +39,7 @@ void Dot_Game::paintEvent(QPaintEvent* e){
     double height = 20.0;
 
     painter.setBrush(QBrush(Qt::black));
-    int e_size = Enemies.size();
+    size_t e_size = Enemies.size();
     for(int i = 0; i < e_size; i++)
     {
         QRect current_enemy((Enemies[i]).x, (Enemies[i]).y, width, height);
@@ -50,12 +49,15 @@ void Dot_Game::paintEvent(QPaintEvent* e){
     painter.setBrush(QBrush(Qt::green));
     QRect Player( this->Player.x, this->Player.y, width, height );
     painter.drawEllipse(Player);
+
     return;
 }
 
 void Dot_Game::keyPressEvent(QKeyEvent* event)
 {
-    switch (event->key()){
+    if(Enemies.size() > 0)
+    {
+        switch (event->key()){
         case Qt::Key_Left :
             this->moveLeft();
             break;
@@ -73,6 +75,7 @@ void Dot_Game::keyPressEvent(QKeyEvent* event)
             break;
         default:
             QWidget::keyPressEvent(event);
+        }
     }
     return;
 }
@@ -98,14 +101,15 @@ void Dot_Game::removeDeadEnemies()
     }
     if(Enemies.size() == 0)
     {
-        ui->GameComplete->setVisible(true);
-        ui->ScoreLabel_eog->setVisible(true);
-        ui->ScoreLabel_2_eog->setVisible(true);
+        ui->game_over->setVisible(true);
+        connect(ui->exit_to_menu, SIGNAL(released()), this, SLOT(close_DG()));
+        ui->game_over->setStyleSheet("background-color: grey;");
         ui->GameComplete->setStyleSheet("color: white;");
         ui->ScoreLabel_eog->setStyleSheet("color: white;");
         ui->ScoreLabel_2_eog->setStyleSheet("color: white;");
         ui->ScoreLabel_2_eog->setNum(score);
-        ui->game_over->setStyleSheet("background-color: black;");
+        //ui->exit_to_menu->setStyleSheet("background-color: grey;");
+        ui->exit_to_menu->setStyleSheet("color: white;");
         ui->game_over->show();
     }
 
@@ -119,6 +123,11 @@ void Dot_Game::handleEventsAndRepaint()
 
     this->repaint();
     return;
+}
+
+void Dot_Game::close_DG()
+{
+    this->close();
 }
 
 void Dot_Game::moveRight()

@@ -131,6 +131,19 @@
        <set>Qt::AlignCenter</set>
       </property>
      </widget>
+     <widget class="QPushButton" name="exit_to_menu">
+      <property name="geometry">
+       <rect>
+        <x>225</x>
+        <y>275</y>
+        <width>150</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Exit to Menu</string>
+      </property>
+     </widget>
     </widget>
    </widget>
    <widget class="QLabel" name="Title">

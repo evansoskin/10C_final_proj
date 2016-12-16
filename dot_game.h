@@ -1,8 +1,10 @@
 #ifndef DOT_GAME_H
 #define DOT_GAME_H
+
 #include <QMainWindow>
 #include <QPainter>
 #include <QKeyEvent>
+#include <QPushButton>
 
 class Main_Menu;
 
@@ -37,6 +39,9 @@ private:
     Point Player;
     std::vector<Point> Enemies;
     int score;
+
+private slots:
+    void close_DG();
 };
 
 #endif // DOT_GAME_H
