@@ -10,7 +10,12 @@ Dot_Game::Dot_Game(QWidget* parent)
 {
     ui->setupUi(this);
 
-    //connect(ui->exit_to_menu, SIGNAL(released()), this, SLOT(close_DG()));
+    //ui->background->setStyleSheet("background-color: black;");
+    //ui->Title->setStyleSheet("color: white;");
+    //ui->ScoreLabel->setStyleSheet("color: white;");
+    //ui->ScoreLabel_2->setStyleSheet("color: white;");
+    //ui->Esc->setStyleSheet("color: white;");
+    //ui->frame->setStyleSheet("background-color: white;");
     ui->game_over->setVisible(false);
 
     // The starting point of player
@@ -18,7 +23,7 @@ Dot_Game::Dot_Game(QWidget* parent)
     this->Player.y = 490;
 
     srand(time(NULL));
-    Enemies.resize(25);
+    Enemies.resize(2);
     size_t e_size = Enemies.size();
     for(int i = 0; i < e_size; i++)
     {
@@ -101,15 +106,18 @@ void Dot_Game::removeDeadEnemies()
     }
     if(Enemies.size() == 0)
     {
+        ui->Title->setVisible(false);
+        ui->ScoreLabel->setVisible(false);
+        ui->ScoreLabel_2->setVisible(false);
+        ui->Esc->setVisible(false);
         ui->game_over->setVisible(true);
         connect(ui->exit_to_menu, SIGNAL(released()), this, SLOT(close_DG()));
-        ui->game_over->setStyleSheet("background-color: grey;");
+        ui->game_over->setStyleSheet("background-color: black; border-radius: 10px;");
         ui->GameComplete->setStyleSheet("color: white;");
         ui->ScoreLabel_eog->setStyleSheet("color: white;");
         ui->ScoreLabel_2_eog->setStyleSheet("color: white;");
         ui->ScoreLabel_2_eog->setNum(score);
-        //ui->exit_to_menu->setStyleSheet("background-color: grey;");
-        ui->exit_to_menu->setStyleSheet("color: white;");
+        ui->exit_to_menu->setStyleSheet("background-color: white; border-style: outset; border-width: 2px; border-radius: 10px; border-color: grey;");
         ui->game_over->show();
     }
 

@@ -7,6 +7,11 @@ Main_Menu::Main_Menu(QWidget* parent)
 {
     ui->setupUi(this);
 
+    ui->background->setStyleSheet("background-color: black;");
+    ui->frame->setStyleSheet("background-color: white; border-radius: 10px;");
+    ui->start_button->setStyleSheet("background-color: white; border-style: outset; border-width: 2px; border-radius: 10px; border-color: grey;");
+    ui->exit_button->setStyleSheet("background-color: white; border-style: outset; border-width: 2px; border-radius: 10px; border-color: grey;");
+
     start = ui->start_button;
     exit = ui->exit_button;
     start_b = false;
