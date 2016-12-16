@@ -68,6 +68,22 @@
     <property name="lineWidth">
      <number>1</number>
     </property>
+    <widget class="QWidget" name="game_over" native="true">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>225</y>
+       <width>600</width>
+       <height>350</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+    </widget>
    </widget>
    <widget class="QLabel" name="Title">
     <property name="geometry">

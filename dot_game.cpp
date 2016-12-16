@@ -92,6 +92,11 @@ void Dot_Game::removeDeadEnemies()
         else
             i++;
     }
+    if(Enemies.size() == 0)
+    {
+        ui->game_over->setStyleSheet("background-color: black;");
+        ui->game_over->show();
+    }
 
     return;
 }
